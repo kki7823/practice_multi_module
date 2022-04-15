@@ -1,0 +1,47 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group 'org.practice'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+subprojects {
+    group = 'com.practice.modules'
+    version = '0.0.1-SNAPSHOT'
+
+    apply plugin:'java'
+    apply plugin:'org.springframework.boot'
+    apply plugin:'io.spring.dependency-management'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        annotationProcessor 'org.projectlombok:lombok'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

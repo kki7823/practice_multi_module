@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'org.practice'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':module1')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = true
+}
+
+test {
+    useJUnitPlatform()
+}
